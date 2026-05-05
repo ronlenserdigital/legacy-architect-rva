@@ -12,8 +12,10 @@
   --text-muted: #7a7060;
   --text-dim: #4a4438;
   --red-soft: #c87070;
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Jost', sans-serif;
+  --font-display: 'Cinzel Decorative', 'Cinzel', Georgia, serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-body: 'Libre Baskerville', serif;
+  --font-sans: 'Inter', sans-serif;
   --max-w: 1200px;
   --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -24,8 +26,8 @@ html { scroll-behavior: smooth; font-size: 16px; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-sans);
-  font-weight: 300;
+  font-family: var(--font-body);
+  font-weight: 400;
   line-height: 1.7;
   overflow-x: hidden;
   cursor: none;
@@ -136,8 +138,8 @@ body::before {
   align-items: center;
   gap: 0.5rem;
   padding: 0.85rem 2.2rem;
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -195,7 +197,8 @@ body::before {
   margin-left: auto;
 }
 .nav-links a {
-  font-size: 0.78rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -257,8 +260,8 @@ body::before {
 
 /* ─── SECTION COMMONS ─── */
 .section-tag {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
@@ -328,7 +331,8 @@ body::before {
   width: 100%;
 }
 .hero-eyebrow {
-  font-size: 0.7rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--gold);
@@ -388,7 +392,8 @@ body::before {
   margin-bottom: 0.5rem;
 }
 .proof-label {
-  font-size: 0.72rem;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
   color: var(--text-muted);
   line-height: 1.5;
   letter-spacing: 0.03em;
@@ -738,7 +743,8 @@ body::before {
   padding: 3.5rem 4rem;
 }
 .tier-tag {
-  font-size: 0.68rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
@@ -815,7 +821,8 @@ body::before {
 }
 .tier-featured .tier-header { padding-top: 3.5rem; }
 .tier-label {
-  font-size: 0.68rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
@@ -1267,33 +1274,141 @@ body::before {
   padding: 0.4rem 0.9rem;
 }
 
+/* ─── FLOATING MOBILE CTA ─── */
+.mobile-float-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--gold);
+  color: var(--bg);
+  text-align: center;
+  padding: 1.1rem 2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  z-index: 900;
+  transition: background 0.3s;
+  border-top: 1px solid var(--gold-light);
+}
+.mobile-float-cta:hover { background: var(--gold-light); }
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
-  .problem-grid, .workbook-card, .zkp-grid, .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .problem-grid,
+  .workbook-card,
+  .zkp-grid,
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .problem-left { position: static; }
   .about-left { position: static; }
   .about-photo-frame { max-width: 320px; }
   .tiers-grid { grid-template-columns: 1fr; }
-  .blueprint-inner { grid-template-columns: 1fr; }
-  .footer-top { grid-template-columns: 1fr; }
+  .blueprint-inner { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 2.5rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 3rem; }
   .footer-links { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (max-width: 768px) {
+  /* Nav */
   .nav-links, .btn-nav { display: none; }
   .hamburger { display: flex; }
-  .hero-proof { flex-direction: column; gap: 1.5rem; }
+
+  /* Show floating CTA */
+  .mobile-float-cta { display: block; }
+
+  /* Add bottom padding so content isn't hidden behind floating CTA */
+  body { padding-bottom: 56px; }
+
+  /* All section padding halved */
+  .problem-section,
+  .testimonial-section,
+  .assessment-section,
+  .workbook-section,
+  .services-section,
+  .zkp-section,
+  .process-section,
+  .about-section,
+  .faq-section,
+  .cta-section { padding: 70px 0; }
+
+  /* Hero */
+  .hero { padding: 110px 1.5rem 60px; }
+  .hero-headline { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+  .hero-sub { font-size: 0.95rem; }
+  .hero-actions { flex-direction: column; gap: 0.8rem; }
+  .hero-actions .btn { width: 100%; justify-content: center; text-align: center; }
+  .hero-proof {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 2rem;
+  }
   .proof-divider { display: none; }
-  .workbook-card { padding: 3rem 2rem; }
-  .cta-options { grid-template-columns: 1fr; }
-  .testimonial-card { padding: 2.5rem 2rem; }
-  .footer-links { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .proof-item { padding-right: 0; display: flex; align-items: center; gap: 1.2rem; }
+  .proof-num { font-size: 2rem; min-width: 70px; }
+  .proof-label { font-size: 0.75rem; }
+  .hero-scroll-indicator { display: none; }
+
+  /* Stats / proof */
+  .proof-item { border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; }
+  .proof-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  /* Testimonial */
+  .testimonial-card { padding: 2rem 1.5rem; }
+  .testimonial-quote { font-size: 1.2rem; }
+  .testimonial-author { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .review-link { margin-left: 0; }
+
+  /* Assessment */
   .pillars-grid { grid-template-columns: 1fr; }
+  .assessment-cta .btn { display: block; width: 100%; text-align: center; margin: 0.5rem 0; }
+
+  /* Workbook */
+  .workbook-card { padding: 2.5rem 1.5rem; grid-template-columns: 1fr; gap: 2.5rem; }
+  .workbook-title { font-size: 1.8rem; }
+  .price-num { font-size: 2.8rem; }
+
+  /* Services */
+  .blueprint-inner { padding: 2rem 1.5rem; grid-template-columns: 1fr; gap: 1.5rem; }
+  .tier-card { margin: 0; }
+  .tier-btn { width: calc(100% - 3rem); }
+  .cta-options { grid-template-columns: 1fr; }
+  .cta-option .btn { width: 100%; justify-content: center; }
+
+  /* Process */
+  .process-step { grid-template-columns: 56px 1fr; gap: 1rem; }
+  .step-num { font-size: 2.2rem; }
+  .step-connector { margin-left: 27px; }
+
+  /* About */
+  .about-photo-frame { max-width: 100%; aspect-ratio: 4/3; }
+  .about-section .btn { width: 100%; text-align: center; justify-content: center; }
+
+  /* ZKP */
+  .zkp-does, .zkp-doesnt { padding: 1.5rem; }
+
+  /* Footer */
+  .footer { padding: 3.5rem 0 3rem; }
+  .footer-links { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .footer-top { gap: 2.5rem; }
+
+  /* CTA */
+  .cta-title { font-size: 1.9rem; }
+
+  /* Container padding */
+  .container { padding: 0 1.25rem; }
 }
+
 @media (max-width: 480px) {
-  .hero-headline { font-size: 2.5rem; }
-  .hero-actions { flex-direction: column; }
-  .hero-actions .btn { width: 100%; justify-content: center; }
-  .section-title { font-size: 2rem; }
-  .zkp-badge { padding: 1rem; }
+  .section-title { font-size: 1.85rem; }
+  .hero-headline { font-size: 2.1rem; }
+  .workbook-card, .blueprint-inner { padding: 2rem 1.2rem; }
+  .tier-header { padding: 2rem 1.5rem 1.5rem; }
+  .tier-body { padding: 1.5rem; }
+  .tier-btn { width: calc(100% - 3rem); margin: 0 1.5rem 1.5rem; }
+  .testimonial-card { padding: 1.8rem 1.2rem; }
+  .zkp-badge { padding: 1rem 1.2rem; }
 }
+
